@@ -5,6 +5,10 @@ var Iterators = {
   // - tripler([7,50,4]) should return [21,150,12].
   // Use `map` to accomplish this.
   tripler: function (numbers) {
+    var tripler = numbers.map(function (thrice) {
+      return thrice * 3;
+    });
+    return tripler;
   },
 
   // perfectSquares() should take an array of numbers as a parameter
@@ -16,6 +20,9 @@ var Iterators = {
   // - perfectSquares([1,4,9]) should return [1,4,9].
   // Use `filter` to accomplish this.
   perfectSquares: function (numbers) {
+    return numbers.filter(function(n) {
+      return Math.sqrt(n)%1===0;
+    });
   },
 
   // product() should accept an array of numbers as a parameter
@@ -26,6 +33,9 @@ var Iterators = {
   // - product([100,200,300]) should return 6000000.
   // Use `reduce` to accomplish this.
   product: function (numbers) {
+    return numbers.reduce(function(a,b) {
+      return a*b;
+    });
   },
 
   // hasInstructor() accepts an array of names and should return true
@@ -38,7 +48,14 @@ var Iterators = {
   // - hasInstructor(["Bob", "Tim", "Jen"]) should return true.
   // Use `some` to accomplish this.
   // Hint: see `toLowerCase`, it could be useful.
+  
   hasInstructor: function (names) {
+    var instructors = ["tim", "elie", "alex"];
+    return names.some(function (name){
+      return instructors.indexOf(name.toLowerCase()) !== -1;
+
+    });
+
   },
 
   // allSamePlayer() should accept an array of players, represented by
@@ -53,6 +70,10 @@ var Iterators = {
   // - allSamePlayer(["_","_","_"]) should return false.
   // Use `every` to accomplish this.
   allSamePlayer: function (players) {
+    var x = ["X", "X" , "X"];
+    var o = ["O" ,"O", "O"];
+    return players.every(function (value) {
+      return 
   },
 
   // Also not an iterator metheod, necessarily. devowel() takes a
@@ -68,7 +89,18 @@ var Iterators = {
   // - devowel("Howdy") should return "Hwdy",
   // - devowel("Phone's ringing, dude.") should return "Phn's rngng, dd.".
   devowel: function (text) {
+    var vowels = ["a", "e","i","o","u"];
+    var splitstring = text.split("");
+    var c = splitstring.filter(function (n) {
+      if (vowels.indexOf(n)  === -1) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    return c.join("");
   }
+  
 };
 
 module.exports = Iterators;
